@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import withNavbar from '../../hocs/withNavbar';
 import './home.css';
 import { generateData } from '../../apis/chatgpt';
@@ -7,7 +7,15 @@ import Card from '../../components/Card/Card';
 function Home() {
   const [inputs, setInputs] = useState([{ id: 0, prompt: '' }]);
   const [outputs, setOutputs] = useState([]);
+  const [output, setOutput] = useState({});
   const  [isLoading, setIsLoading] = useState(false)
+
+  useEffect(()=>{
+    setOutputs([...outputs, output])
+    if(outputs.length+1 == inputs.length){
+      setIsLoading(false)
+    }
+  },[output])
 
   const addInputField = () => {
     const newInput = { id: inputs.length, prompt: '' };
@@ -22,17 +30,30 @@ function Home() {
   };
 
  
+// const generateResult = async () => {
+//   setIsLoading(true)
+//   const responses = await Promise.all(
+//     inputs.map(async inp => {
+//       const res = await generateData(inp.prompt)
+//       return {id: inp.id, prompt: inp.prompt, value: res.data.choices[0].text}
+//     })
+//   );
+//     setIsLoading(false)
+//     setOutputs(responses)
+// };
+
+
 const generateResult = async () => {
   setIsLoading(true)
-  const responses = await Promise.all(
-    inputs.map(async inp => {
-      const res = await generateData(inp.prompt)
-      return {id: inp.id, prompt: inp.prompt, value: res.data.choices[0].text}
+  setOutputs([])
+  inputs.forEach( inp => {
+    generateData(inp.prompt)
+    .then(res=>{
+      setOutput({id: inp.id, prompt: inp.prompt, value: res.data.choices[0].text})
     })
-  );
-    setIsLoading(false)
-    setOutputs(responses)
+  })
 };
+
 console.log(outputs);
   return (
     <div className='home'>
@@ -65,11 +86,21 @@ console.log(outputs);
         </div>
         {/* output  */}
         {
+            isLoading && "Loading.."
+        }
+        {
+          outputs && outputs.map(output=>{
+            return <Card key={output.id} data={output} />
+          })
+         
+        }
+         
+        {/* {
           isLoading ? <div>Loading..</div>
           : outputs.map(output=>{
             return <Card key={output.id} data={output} />
           })
-        }
+        } */}
     </div>
   );
 }

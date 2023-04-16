@@ -6,11 +6,11 @@ const configuration = new Configuration({
 delete configuration.baseOptions.headers['User-Agent'];
 const openai = new OpenAIApi(configuration);
 
-export const generateData = async(title) => {
-    const response = await openai.createCompletion({
+export const generateData = (title) => {
+    const response = openai.createCompletion({
         model: "text-davinci-003",
         prompt: title,
-        max_tokens: 5,
+        max_tokens: 1005,
         temperature: 0,
       });
     return response      
