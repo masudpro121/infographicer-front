@@ -30,17 +30,6 @@ function Home() {
   };
 
  
-// const generateResult = async () => {
-//   setIsLoading(true)
-//   const responses = await Promise.all(
-//     inputs.map(async inp => {
-//       const res = await generateData(inp.prompt)
-//       return {id: inp.id, prompt: inp.prompt, value: res.data.choices[0].text}
-//     })
-//   );
-//     setIsLoading(false)
-//     setOutputs(responses)
-// };
 
 
 const generateResult = async () => {
