@@ -1,6 +1,10 @@
+.link{
+    text-decoration: none;
+    color: black
+}
 .nav{
     width: 200px;
-    height: 90vh;
+    height: 95vh;
     box-shadow: 0 0 1px 1px rgb(224, 223, 223);
     border-radius: 10px;
     padding: 20px;
