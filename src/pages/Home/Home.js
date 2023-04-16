@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import withNavbar from '../../hocs/withNavbar';
 import './home.css';
+import { generateData } from '../../apis/chatgpt';
+import Card from '../../components/Card/Card';
 
 function Home() {
   const [inputs, setInputs] = useState([{ id: 0, prompt: '' }]);
-  const [output, setOutput] = useState([{ id: 0, prompt: '' }]);
+  const [outputs, setOutputs] = useState([]);
+  const  [isLoading, setIsLoading] = useState(false)
+
   const addInputField = () => {
     const newInput = { id: inputs.length, prompt: '' };
     setInputs([...inputs, newInput]);
@@ -19,25 +23,22 @@ function Home() {
 
  
 const generateResult = async () => {
+  setIsLoading(true)
   const responses = await Promise.all(
     inputs.map(async inp => {
-      const res = await fetch(
-        `https://jsonplaceholder.typicode.com/posts/${inp.id+1}`
-      ); 
-      const result = await res.json()
-      return {id: inp.id, prompt: inp.prompt, value: result.title}
+      const res = await generateData(inp.prompt)
+      return {id: inp.id, prompt: inp.prompt, value: res.data.choices[0].text}
     })
   );
-  
-    setOutput(responses)
+    setIsLoading(false)
+    setOutputs(responses)
 };
-
+console.log(outputs);
   return (
     <div className='home'>
       <div>
         <h3>Web AI</h3>
       </div>
-      <div>
         <div>
           <h6>Prompt</h6>
           <small>Surprise me</small>
@@ -62,7 +63,13 @@ const generateResult = async () => {
         <div>
           <button onClick={generateResult}>Generate</button>
         </div>
-      </div>
+        {/* output  */}
+        {
+          isLoading ? <div>Loading..</div>
+          : outputs.map(output=>{
+            return <Card key={output.id} data={output} />
+          })
+        }
     </div>
   );
 }
