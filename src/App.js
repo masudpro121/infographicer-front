@@ -2,23 +2,12 @@ import logo from './logo.svg';
 import './App.css';
 import { Button } from 'react-bootstrap';
 import { createContext } from 'react';
-import {
-  createBrowserRouter,
-  RouterProvider,
-  Route,
-  Link,
-} from "react-router-dom";
+import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import Home from './pages/Home/Home';
 
 // Router 
 const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <div>Home</div>,
-  },
-  {
-    path: "about",
-    element: <div>About</div>,
-  },
+  { path: "/", element: <Home/> },
 ]);
 
 // App Started 
@@ -28,9 +17,11 @@ function App() {
 
   }
   return (
-    <RouterProvider router={router} >
+    <div className="app">
+      <RouterProvider router={router} >
       <MyContext.Provider value={contextValue} />
     </RouterProvider>
+    </div>
   );
 }
 
