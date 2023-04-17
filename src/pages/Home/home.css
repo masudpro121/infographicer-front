@@ -28,6 +28,7 @@
     padding-left: 18px;
     padding-right: 18px;
     background-color: rgb(240, 82, 82);
+    margin-left: 3px;
 }
 .inputs-cont .input:hover .cross-btn{
     display: block;
