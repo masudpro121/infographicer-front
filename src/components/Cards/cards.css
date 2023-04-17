@@ -39,6 +39,6 @@
     display: grid;
     column-gap: 20px;
     row-gap: 30px;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     flex-flow: wrap;
 }

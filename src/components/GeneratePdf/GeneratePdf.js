@@ -214,7 +214,7 @@ export const GeneratePdf = ({outputs}) => {
       <View style={styles.imgCont}>
         <Image style={styles.logo} src={Logo} />
           <View style={{fontSize:'30px', color: '#15B497', marginTop: '20px'}}>
-            <Text>AI Web Application</Text>
+            <Text>Infographicer</Text>
         </View>
       </View>
       

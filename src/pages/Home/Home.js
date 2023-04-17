@@ -17,9 +17,10 @@ function Home() {
   
   
   useEffect(()=>{
-      setOutputs([...outputs, output])
-      if(outputs.length+1 == inputs.length){
-        setIsLoading(false)
+      if(output.value){
+        console.log(output, 'useeffect');
+        setOutputs([...outputs, output])
+      setIsLoading(false)
       }
   },[output])
 
@@ -41,12 +42,16 @@ function Home() {
 const generateResult = async () => {
   setInputs([{ id: 0, prompt: '' }])
   setIsLoading(true)
-  setOutputs([])
+  // setOutputs([])
   inputs.forEach( inp => {
-    generateData(inp.prompt)
-    .then(res=>{
-      setOutput({id: inp.id, prompt: inp.prompt, value: res.data.choices[0].text})
-    })
+    if(inp.prompt){
+      generateData(inp.prompt)
+      .then(res=>{
+        setOutput({id: inp.id, prompt: inp.prompt, value: res.data.choices[0].text})
+      })
+    }else{
+      setIsLoading(false)
+    }
   })
 };
 
@@ -209,15 +214,15 @@ const fakeOutputs = [
     Over the next 20 years, I ran Boston now and again. Then I began returning on the precise 5-year anniversaries of 1968.`
   },
 ]
-
+console.log(outputs.length, 'outputs length')
+console.log(outputs);
   return (
     <div className='home'>
       <div>
-        <h3>Web AI</h3>
+        <h3>Infographicer</h3>
       </div>
         <div className='prompt'>
           <h6>Prompt</h6>
-          <small className='surprise'>Surprise me</small>
         </div>
         <div className='inputs-cont'>
           <div className='inputs'>
@@ -240,11 +245,13 @@ const fakeOutputs = [
         <div>
           <button onClick={generateResult}>Generate</button>
         </div>
-        <div className='download-all'>
-          <PDFDownloadLink document={<GeneratePdf outputs={outputs} />} fileName={outputs.length>0 ? outputs[0]?.prompt?.split(' ')?.slice(0,5)?.join(" "):'AI-Result'}> 
+        {
+          outputs.length > 0 && outputs[0].value && <div className='download-all'>
+          <PDFDownloadLink document={<GeneratePdf outputs={outputs} />} fileName={'Infographicer_'+new Date().toLocaleDateString()}> 
           {({loading})=> <button>{loading?'Loading..':'Download All'}</button>}
         </PDFDownloadLink>
         </div>
+        }
         
         </div>
         {/* output  */}

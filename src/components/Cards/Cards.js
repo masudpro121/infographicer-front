@@ -4,7 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "./cards.css"
-
+import wordwrap from 'wordwrap';
 function Card({data:{prompt,value}}) {
   const [show, setShow] = useState(false);
 
@@ -19,17 +19,31 @@ function Card({data:{prompt,value}}) {
     handleClose()
     toast.success("Copied! "+ prompt.split(" ").slice(0,3).join(" ")+"...")
   }
+  const formatText = (text) => {
+    const formattedText = text.replace(/\.\s/g, ".\n");
+    return formattedText
+  }
   return value && (
     <>
       <div className='mycard' onClick={handleShow}>
         <div className='s-prompt'>{shortPrompt}</div>
-        <div className='s-value'>{shortValue}</div>
+        <div className='s-value'  dangerouslySetInnerHTML={{__html: shortPrompt}} />
       </div>
       <Modal size='lg' show={show} onHide={handleClose} centered>
         <Modal.Header className='modal-header' closeButton>
           {prompt}
         </Modal.Header>
-        <Modal.Body className='model-body' >{value} </Modal.Body>
+        <Modal.Body className='model-body' >
+          {
+            window.innerWidth < 527 && <pre >{wordwrap(38)(value)}</pre>
+          }
+          {
+            window.innerWidth >527 && window.innerWidth < 992 && <pre >{wordwrap(55)(value)}</pre>
+          }
+          {
+            window.innerWidth > 991 && <pre >{wordwrap(90)(value)}</pre>
+          }
+        </Modal.Body>
         <Modal.Footer>
           
           <button onClick={handleCopy}>
