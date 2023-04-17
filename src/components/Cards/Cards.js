@@ -27,7 +27,7 @@ function Card({data:{prompt,value}}) {
     <>
       <div className='mycard' onClick={handleShow}>
         <div className='s-prompt'>{shortPrompt}</div>
-        <div className='s-value'  dangerouslySetInnerHTML={{__html: shortPrompt}} />
+        <div className='s-value'  >{shortValue}</div>
       </div>
       <Modal size='lg' show={show} onHide={handleClose} centered>
         <Modal.Header className='modal-header' closeButton>

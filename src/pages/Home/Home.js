@@ -25,7 +25,8 @@ function Home() {
   },[output])
 
   const addInputField = () => {
-    const newInput = { id: inputs.length, prompt: '' };
+    const newInput = { id: inputs[inputs.length-1].id+1, prompt: '' };
+    console.log(inputs, 'inp');
     setInputs([...inputs, newInput]);
   };
 
