@@ -8,6 +8,7 @@ import { PDFDownloadLink } from '@react-pdf/renderer';
 import ReactDOM from 'react-dom/client';
 import { MyContext } from '../../App';
 import Loading from '../../assets/img/loading.gif'
+import { ToastContainer, toast } from 'react-toastify';
 function Home() {
   const {outputs, setOutputs} = useContext(MyContext)
   const [inputs, setInputs] = useState([{ id: 0, prompt: '' }]);
@@ -18,7 +19,6 @@ function Home() {
   
   useEffect(()=>{
       if(output.value){
-        console.log(output, 'useeffect');
         setOutputs([...outputs, output])
       setIsLoading(false)
       }
@@ -40,9 +40,9 @@ function Home() {
 
 
 const generateResult = async () => {
-  setInputs([{ id: 0, prompt: '' }])
+  // setInputs([{ id: 0, prompt: '' }])
   setIsLoading(true)
-  // setOutputs([])
+  setOutputs([])
   inputs.forEach( inp => {
     if(inp.prompt){
       generateData(inp.prompt)
@@ -50,6 +50,7 @@ const generateResult = async () => {
         setOutput({id: inp.id, prompt: inp.prompt, value: res.data.choices[0].text})
       })
     }else{
+      toast.error("Please fill the prompt")
       setIsLoading(false)
     }
   })
@@ -217,6 +218,7 @@ const fakeOutputs = [
 console.log(outputs.length, 'outputs length')
 console.log(outputs);
   return (
+    <>
     <div className='home'>
       <div>
         <h3>Infographicer</h3>
@@ -237,12 +239,12 @@ console.log(outputs);
               </div>
             ))}
           </div>
-          <div >
+          <div className='plusCont'>
             <button className="plus-btn" onClick={addInputField}>+</button>
           </div>
         </div>
         <div className="generate-btns">
-        <div>
+        <div >
           <button onClick={generateResult}>Generate</button>
         </div>
         {
@@ -269,6 +271,8 @@ console.log(outputs);
     
         
     </div>
+    <ToastContainer autoClose={2000} theme='dark' />
+    </>
   );
 }
 

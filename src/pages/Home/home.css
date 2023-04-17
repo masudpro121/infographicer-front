@@ -32,7 +32,11 @@
     padding: 3px 15px 6px 15px;
     margin-left: 10px
 }
-
+.plusCont{
+    display: flex;
+    align-items: end;
+    margin-bottom: 10px;
+}
 .generate-btns{
     display: flex;
     justify-content: space-between;
