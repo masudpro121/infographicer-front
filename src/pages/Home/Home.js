@@ -3,7 +3,9 @@ import withNavbar from '../../hocs/withNavbar';
 import './home.css';
 import { generateData } from '../../apis/chatgpt';
 import Card from '../../components/Card/Card';
-
+import GeneratePdf from '../../components/GeneratePdf/GeneratePdf';
+import { PDFDownloadLink } from '@react-pdf/renderer';
+import ReactDOM from 'react-dom/client';
 function Home() {
   const [inputs, setInputs] = useState([{ id: 0, prompt: '' }]);
   const [outputs, setOutputs] = useState([]);
@@ -43,7 +45,7 @@ const generateResult = async () => {
   })
 };
 
-console.log(outputs);
+
   return (
     <div className='home'>
       <div>
@@ -84,6 +86,7 @@ console.log(outputs);
          
         }
          
+    
         
     </div>
   );
