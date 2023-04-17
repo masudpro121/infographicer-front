@@ -1,26 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
 import { Button } from 'react-bootstrap';
-import { createContext } from 'react';
+import { createContext, useState } from 'react';
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import Home from './pages/Home/Home';
+import GeneratePdfViewer from './components/GeneratePdf/GeneratePdf';
 
 // Router 
 const router = createBrowserRouter([
+  { path: "/documentation", element: <GeneratePdfViewer/> },
   { path: "/", element: <Home/> },
 ]);
 
 // App Started 
 export const MyContext = createContext()
 function App() {
+  const [outputs, setOutputs] = useState([]);
   const contextValue = {
-
+    outputs, setOutputs
   }
   return (
     <div className="app">
-      <RouterProvider router={router} >
-      <MyContext.Provider value={contextValue} />
-    </RouterProvider>
+        <MyContext.Provider value={contextValue} >
+        <RouterProvider router={router} ></RouterProvider>
+        </MyContext.Provider>
+      {/* <RouterProvider router={router} >
+        <MyContext.Provider value={contextValue} />
+      </RouterProvider> */}
     </div>
   );
 }

@@ -1,19 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import withNavbar from '../../hocs/withNavbar';
 import './home.css';
 import { generateData } from '../../apis/chatgpt';
 import Cards from '../../components/Cards/Cards';
-import GeneratePdf from '../../components/GeneratePdf/GeneratePdf';
+import GeneratePdfViewer, { GeneratePdf } from '../../components/GeneratePdf/GeneratePdf';
 import { PDFDownloadLink } from '@react-pdf/renderer';
 import ReactDOM from 'react-dom/client';
+import { MyContext } from '../../App';
 function Home() {
+  const {outputs, setOutputs} = useContext(MyContext)
   const [inputs, setInputs] = useState([{ id: 0, prompt: '' }]);
-  const [outputs, setOutputs] = useState([]);
   const [output, setOutput] = useState({});
   const  [isLoading, setIsLoading] = useState(false)
-
+  
+  
   useEffect(()=>{
-    setOutputs([...outputs, output])
+      setOutputs([...outputs, output])
     if(outputs.length+1 == inputs.length){
       setIsLoading(false)
     }
@@ -236,17 +238,20 @@ const fakeOutputs = [
           <button onClick={generateResult}>Generate</button>
         </div>
         <div className='download-all'>
-          <button >Download All</button>
+          <PDFDownloadLink document={<GeneratePdf outputs={outputs} />} fileName={outputs.length>0 ? outputs[0]?.prompt?.split(' ')?.slice(0,5)?.join(" "):'AI-Result'}> 
+          {({loading})=> <button>{loading?'Loading..':'Download All'}</button>}
+        </PDFDownloadLink>
         </div>
+        
         </div>
         {/* output  */}
         {/* {
             isLoading && "Loading.."
         } */}
+
         {
-          fakeOutputs && <Cards data={fakeOutputs} />
+          outputs && <Cards data={outputs} />
         }
-         
     
         
     </div>

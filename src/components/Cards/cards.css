@@ -17,7 +17,13 @@
     background-color: var(--primary-color);
     color: white;
     font-weight: 500;
+    padding: 30px !important;
 }
+
+.model-body{
+    padding: 30px !important;
+}
+
 .Toastify__toast{
     min-height: 0;
 }

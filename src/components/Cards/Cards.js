@@ -11,8 +11,8 @@ function Card({data:{prompt,value}}) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const shortPrompt = prompt.split(" ").slice(0,10).join(" ")
-  const shortValue = value.split(" ").slice(0,20).join(" ")
+  const shortPrompt = prompt?.split(" ").slice(0,10).join(" ")
+  const shortValue = value?.split(" ").slice(0,20).join(" ")
 
   const handleCopy = () => {
     navigator.clipboard.writeText(value);
@@ -29,7 +29,7 @@ function Card({data:{prompt,value}}) {
         <Modal.Header className='modal-header' closeButton>
           {prompt}
         </Modal.Header>
-        <Modal.Body>{value} </Modal.Body>
+        <Modal.Body className='model-body' >{value} </Modal.Body>
         <Modal.Footer>
           
           <button onClick={handleCopy}>
