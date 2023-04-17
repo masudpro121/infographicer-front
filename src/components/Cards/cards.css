@@ -1,0 +1,38 @@
+.mycard{
+    cursor: pointer;
+}
+.mycard .s-prompt{
+    background-color: var(--primary-color);
+    padding: 30px;
+    color: white;
+    font-weight: 500;
+    border-radius: 5px 5px 0 0;
+}
+.mycard .s-value{
+    background-color: white;
+    padding: 30px;
+}
+
+.modal-header{
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 500;
+}
+.Toastify__toast{
+    min-height: 0;
+}
+.Toastify__progress-bar--success{
+    background-color: var(--primary-color);
+}
+.Toastify__toast svg{
+    fill: var(--primary-color)
+}
+/* ----------------------  */
+.cards{
+    margin-top: 20px;
+    display: grid;
+    column-gap: 20px;
+    row-gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    flex-flow: wrap;
+}

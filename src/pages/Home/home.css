@@ -32,3 +32,13 @@
     padding: 3px 15px 6px 15px;
     margin-left: 10px
 }
+
+.generate-btns{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.generate-btns .download-all{
+    margin-right: 10%;
+}
