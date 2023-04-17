@@ -7,6 +7,7 @@ import GeneratePdfViewer, { GeneratePdf } from '../../components/GeneratePdf/Gen
 import { PDFDownloadLink } from '@react-pdf/renderer';
 import ReactDOM from 'react-dom/client';
 import { MyContext } from '../../App';
+import Loading from '../../assets/img/loading.gif'
 function Home() {
   const {outputs, setOutputs} = useContext(MyContext)
   const [inputs, setInputs] = useState([{ id: 0, prompt: '' }]);
@@ -14,11 +15,12 @@ function Home() {
   const  [isLoading, setIsLoading] = useState(false)
   
   
+  
   useEffect(()=>{
       setOutputs([...outputs, output])
-    if(outputs.length+1 == inputs.length){
-      setIsLoading(false)
-    }
+      if(outputs.length+1 == inputs.length){
+        setIsLoading(false)
+      }
   },[output])
 
   const addInputField = () => {
@@ -37,6 +39,7 @@ function Home() {
 
 
 const generateResult = async () => {
+  setInputs([{ id: 0, prompt: '' }])
   setIsLoading(true)
   setOutputs([])
   inputs.forEach( inp => {
@@ -245,9 +248,13 @@ const fakeOutputs = [
         
         </div>
         {/* output  */}
-        {/* {
-            isLoading && "Loading.."
-        } */}
+        {
+            isLoading && (
+              <div>
+                <img src={Loading} alt="" />
+              </div>
+            )
+        }
 
         {
           outputs && <Cards data={outputs} />
