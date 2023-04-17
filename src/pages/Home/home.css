@@ -1,0 +1,34 @@
+.home .prompt{
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.prompt .surprise{
+    background-color: var(--secondaryColor);
+    color: white;
+    font-weight: 100;
+    padding: 2px 7px 0;
+    border-radius: 3px;
+}
+
+.inputs-cont{
+    display: flex;
+}
+.inputs-cont .inputs{
+    width: 60%;
+    max-width: 400px;
+}
+
+.inputs-cont .inputs .input{
+    margin-bottom: 10px;
+}
+.inputs-cont .inputs .input input{
+    width: 100%;
+    padding: 10px;
+}
+.plus-btn{
+    font-size: 23px;
+    padding: 3px 15px 6px 15px;
+    margin-left: 10px
+}

@@ -1,8 +1,35 @@
 :root{
   --bgColor: #F8F9FA;
   --textColor: #2D3654;
+  --textColor2: #f0f5f0;
+  --primary-color: #15B497;
+  --secondaryColor: #485256;
+}
+ * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  border: none
+ }
+
+ .app{
+  margin: 20px 10px 0 10px;
+  box-sizing: border-box;
 }
 
-.app{
-  margin: 20px 10px 0 10px;
+input[type=text]{
+  border: 1px solid #E6E6E6;
+  border-radius: 3px;
+  padding: 5px 10px;
+}
+input[type=text]:focus{
+  outline: none;
+  border: 1px solid var(--primary-color);
+}
+button{
+  background-color: var(--primary-color);
+  padding: 3px 5px;
+  color: var(--textColor2);
+  border-radius: 4px !important;
 }

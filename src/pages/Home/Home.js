@@ -49,25 +49,25 @@ console.log(outputs);
       <div>
         <h3>Web AI</h3>
       </div>
-        <div>
+        <div className='prompt'>
           <h6>Prompt</h6>
-          <small>Surprise me</small>
+          <small className='surprise'>Surprise me</small>
         </div>
-        <div className='d-flex'>
-          <div>
+        <div className='inputs-cont'>
+          <div className='inputs'>
             {inputs.map(input => (
-              <div key={input.id}>
+              <div key={input.id} className='input'>
                 <input
                   type='text'
-                  placeholder='type..'
+                  placeholder='Send a message...'
                   value={input.prompt}
                   onChange={e => handleInputChange(e, input.id)}
                 />
               </div>
             ))}
           </div>
-          <div>
-          <button onClick={addInputField}>+</button>
+          <div >
+            <button className="plus-btn" onClick={addInputField}>+</button>
           </div>
         </div>
         <div>
@@ -84,12 +84,7 @@ console.log(outputs);
          
         }
          
-        {/* {
-          isLoading ? <div>Loading..</div>
-          : outputs.map(output=>{
-            return <Card key={output.id} data={output} />
-          })
-        } */}
+        
     </div>
   );
 }
