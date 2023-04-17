@@ -56,6 +56,11 @@ const generateResult = async () => {
   })
 };
 
+const removeField = (id) =>{
+  const filtered = inputs.filter(inp=>inp.id != id)
+  setInputs(filtered)
+}
+
 const fakeOutputs = [
   {
     id: 1, 
@@ -230,12 +235,17 @@ console.log(outputs);
           <div className='inputs'>
             {inputs.map(input => (
               <div key={input.id} className='input'>
-                <input
-                  type='text'
-                  placeholder='Send a message...'
-                  value={input.prompt}
-                  onChange={e => handleInputChange(e, input.id)}
-                />
+                <div className='d-flex'>
+                  <input
+                    type='text'
+                    placeholder='Send a message...'
+                    value={input.prompt}
+                    onChange={e => handleInputChange(e, input.id)}
+                  />
+                  {
+                    inputs.length>1 && <button onClick={()=>removeField(input.id)} className='cross-btn'>X</button>
+                  }
+                </div>
               </div>
             ))}
           </div>
