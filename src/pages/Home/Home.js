@@ -12,6 +12,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import {RiMessage3Line} from 'react-icons/ri'
 import {MdOutlineNotificationsActive} from 'react-icons/md'
 import {FiSearch} from 'react-icons/fi'
+import GenerateDocx from '../../components/GenerateDocx/GenerateDocx';
 
 function Home() {
   const {outputs, setOutputs} = useContext(MyContext)
@@ -221,8 +222,6 @@ const fakeOutputs = [
     Over the next 20 years, I ran Boston now and again. Then I began returning on the precise 5-year anniversaries of 1968.`
   },
 ]
-console.log(outputs.length, 'outputs length')
-console.log(outputs);
   return (
     <>
     <div className='home'>
@@ -255,6 +254,7 @@ console.log(outputs);
                     placeholder='Send a message...'
                     value={input.prompt}
                     onChange={e => handleInputChange(e, input.id)}
+                    onKeyUp= {e=>e.code == 'Enter' && addInputField()}
                   />
                   {
                     inputs.length>1 && <button onClick={()=>removeField(input.id)} className='cross-btn'>X</button>
@@ -272,10 +272,13 @@ console.log(outputs);
           <button onClick={generateResult}>Generate</button>
         </div>
         {
+          outputs.length > 0 && outputs[0].value && <GenerateDocx outputs={outputs} />
+        }
+        {
           outputs.length > 0 && outputs[0].value && <div className='download-all'>
           <PDFDownloadLink document={<GeneratePdf outputs={outputs} />} fileName={'Infographicer_'+new Date().toLocaleDateString()}> 
           {({loading})=> <button>{loading?'Loading..':'Download All'}</button>}
-        </PDFDownloadLink>
+          </PDFDownloadLink>
         </div>
         }
         

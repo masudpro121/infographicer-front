@@ -196,7 +196,6 @@ const GeneratePdfViewer = () => {
       Over the next 20 years, I ran Boston now and again. Then I began returning on the precise 5-year anniversaries of 1968.`
     },
   ]
-  console.log(outputs, 'outputs');
   return (
     <PDFViewer style={{width:'100vw', height:'100vh'}}>
       <GeneratePdf outputs={outputs} />
@@ -207,7 +206,6 @@ const GeneratePdfViewer = () => {
 export default GeneratePdfViewer
 
 export const GeneratePdf = ({outputs}) => {
-  console.log(outputs, 'outputs');
   return (
     <Document style={{width:'100vw', height:'100vh'}}>
     <Page size="A4" style={styles.page}>
