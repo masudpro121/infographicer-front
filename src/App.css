@@ -1,8 +1,9 @@
 :root{
-  --bgColor: #F8F9FA;
+  --bgColor: #F5F5F5;
+  --bgColor2: white;
   --textColor: #2D3654;
   --textColor2: #f0f5f0;
-  --primary-color: #15B497;
+  --primary-color: #7b0e9c86;
   --secondaryColor: #959BA5;
   --primary-font: 'Poppins', sans-serif;
 }
@@ -20,10 +21,14 @@
 }
 
 input[type=text]{
-  border: 1px solid #E6E6E6;
-  border-radius: 3px;
+  border-radius: 30px;
   padding: 5px 10px;
 }
+input[type=text]::placeholder{
+ color: var(--secondaryColor);
+ font-size: 14px;
+}
+
 input[type=text]:focus{
   outline: none;
   border: 1px solid var(--primary-color);

@@ -1,34 +1,87 @@
+.home{
+    margin: 0 20px
+}
+.home .sec1{
+    display: flex;
+    gap: 10px;
+   
+}
+.home .sec1 input{
+    width: 100%;
+    padding-left: 35px;
+}
+.home .search-cont{
+    position: relative;
+    width: 100%
+}
+.home .search-icon{
+    position: absolute;
+    top: 8.5px;
+    left: 15px;
+    color: var(--secondaryColor)
+}
+.home .sec1 .iconCont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    border-radius: 50%;
+    width: 47px;
+    height: 40px;
+    font-size: 20px;
+    padding: 5px;
+}
+
+
 .home .prompt{
     display: flex;
     gap: 10px;
     margin-bottom: 10px;
+    background-color: var(--bgColor2);
+    padding: 10px 20px;
+    border-radius: 30px;
+    align-items: center;
+    
+}
+.home .prompt h6{
+    font-weight: bold;
+    margin: 0;
+    font-size: 1.2rem;
 }
 
 .prompt .surprise{
-    background-color: var(--secondaryColor);
-    color: white;
+    background-color: #F5F5F5;
+    color: black;
     font-weight: 100;
-    padding: 2px 7px 0;
-    border-radius: 3px;
+    padding: 4px 15px;
+    border-radius: 30px;
+
 }
 
 .inputs-cont{
     display: flex;
+    position: relative;
 }
 .inputs-cont .inputs{
-    width: 60%;
-    max-width: 400px;
+    width: 100%;
 }
 
 .inputs-cont .inputs .input{
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+}
+.inputs-cont .inpx{
+    position: relative
 }
 .cross-btn{
     display: none;
-    padding-left: 18px;
-    padding-right: 18px;
-    background-color: rgb(240, 82, 82);
-    margin-left: 3px;
+    font-size: 12px;
+    padding: 10px 16px;
+    /* background-color: rgb(240, 82, 82); */
+    border-radius: 10px!important;
+    z-index: 1;
+    position: absolute;
+    right: -25px;
+    top: 3px;
 }
 .inputs-cont .input:hover .cross-btn{
     display: block;
@@ -38,18 +91,22 @@
 }
 .inputs-cont .inputs .input input{
     width: 100%;
-    padding: 10px;
+    padding: 10px 20px;
 }
 .plus-btn{
-    font-size: 23px;
-    padding: 3px 15px 6px 15px;
-    margin-left: 10px
+    font-size: 18px;
+    padding: 3px 13px 5px 13px;
+    margin-left: 10px;
+    position: absolute;
+    right: -25px;
+    bottom: 24px;
+    border-radius: 10px!important;
 }
-.plusCont{
+/* .plusCont{
     display: flex;
     align-items: end;
     margin-bottom: 10px;
-}
+} */
 .generate-btns{
     display: flex;
     justify-content: space-between;

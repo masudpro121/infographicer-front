@@ -9,13 +9,15 @@ import ReactDOM from 'react-dom/client';
 import { MyContext } from '../../App';
 import Loading from '../../assets/img/loading.gif'
 import { ToastContainer, toast } from 'react-toastify';
+import {RiMessage3Line} from 'react-icons/ri'
+import {MdOutlineNotificationsActive} from 'react-icons/md'
+import {FiSearch} from 'react-icons/fi'
+
 function Home() {
   const {outputs, setOutputs} = useContext(MyContext)
   const [inputs, setInputs] = useState([{ id: 0, prompt: '' }]);
   const [output, setOutput] = useState({});
   const  [isLoading, setIsLoading] = useState(false)
-  
-  
   
   useEffect(()=>{
       if(output.value){
@@ -36,8 +38,6 @@ function Home() {
     );
     setInputs(updatedInputs);
   };
-
- 
 
 
 const generateResult = async () => {
@@ -226,17 +226,30 @@ console.log(outputs);
   return (
     <>
     <div className='home'>
-      <div>
+      <div className="sec1">
+        <div className='search-cont'>
+          <FiSearch className='search-icon' />
+          <input type="text" placeholder='Search..' />
+        </div>
+        <div className='iconCont'>
+          <RiMessage3Line />
+        </div>
+        <div className='iconCont'>
+          <MdOutlineNotificationsActive />
+        </div>
+      </div>
+      <div className='mt-4'>
         <h3>Infographicer</h3>
       </div>
-        <div className='prompt'>
+        <div className='prompt mt-3 mb-4'>
           <h6>Prompt</h6>
+          <small className="surprise">Surprise me</small>
         </div>
         <div className='inputs-cont'>
           <div className='inputs'>
             {inputs.map(input => (
               <div key={input.id} className='input'>
-                <div className='d-flex'>
+                <div className='d-flex inpx'>
                   <input
                     type='text'
                     placeholder='Send a message...'
