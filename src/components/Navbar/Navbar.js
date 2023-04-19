@@ -3,17 +3,17 @@ import "./navbar.css"
 import Logo from "../../assets/img/logo.png"
 import { BiHomeSmile } from 'react-icons/bi';
 import { HiOutlineDocumentText } from 'react-icons/hi';
-import { GrBlog } from 'react-icons/gr';
-import { MdMiscellaneousServices } from 'react-icons/md';
+import { IoIosLogOut } from 'react-icons/io';
+import { MdMiscellaneousServices, MdOutlinePrivacyTip } from 'react-icons/md';
 import { Link } from 'react-router-dom';
-
+import RocketImg from '../../assets/img/rocket.png'
 export default function Navbar() {
   return (
     <div className="nav">
         <div className="logo">
           <img src={Logo} alt="Logo" />
         </div>
-        <div className="tabs">
+        <div className="tabs ">
             <Link to="/" className='link'>
             <div className='tab'>
                 <div className="icon">
@@ -35,16 +35,7 @@ export default function Navbar() {
                 </div>
               </div>
             </Link>
-            <Link to="/blog" className='link'>
-              <div className='tab'>
-                <div className="icon">
-                  <GrBlog />
-                </div>
-                <div className="text">
-                  Blogs
-                </div>
-              </div>
-            </Link>
+           
             
             <Link to="/services" className='link'>
             <div className='tab'>
@@ -56,6 +47,48 @@ export default function Navbar() {
               </div>
             </div>
             </Link>
+            <Link to="/documentation" className='link'>
+              <div className='tab'>
+                <div className="icon">
+                  <MdOutlinePrivacyTip />
+                </div>
+                <div className="text">
+                  Privacy
+                </div>
+              </div>
+            </Link>
+            <div className="underline"></div>
+            <Link to="/settings" className='link'>
+            <div className='tab'>
+              <div className="icon">
+                <MdMiscellaneousServices />
+              </div>
+              <div className="text">
+                Settings
+              </div>
+            </div>
+            </Link>
+            <div className='tab'>
+              <div className="icon">
+                <IoIosLogOut />
+              </div>
+              <div className="text">
+                Logout
+              </div>
+            </div>
+           
+           <div className="upgrade">
+                <div className="inner">
+                  <h6>Upgrade to PRO</h6>
+                  <small>Unlock premium features for free</small>
+                  <div>
+                    <button>TRY NOW</button>
+                  </div>
+                    <img src={RocketImg} alt="" />
+                </div>
+           </div>
+            
+           
         </div>
     </div>
   )

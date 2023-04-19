@@ -3,18 +3,19 @@
   --textColor: #2D3654;
   --textColor2: #f0f5f0;
   --primary-color: #15B497;
-  --secondaryColor: #485256;
+  --secondaryColor: #959BA5;
+  --primary-font: 'Poppins', sans-serif;
 }
  * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   text-decoration: none;
-  border: none
+  border: none;
+  font-family: var(--primary-font);
  }
 
  .app{
-  margin: 20px 10px 0 10px;
   box-sizing: border-box;
 }
 
@@ -28,8 +29,8 @@ input[type=text]:focus{
   border: 1px solid var(--primary-color);
 }
 button{
-  background-color: var(--primary-color);
-  padding: 3px 10px;
+  background: linear-gradient(to right,  #cb7cd0 , #8069da);
+  padding: 6px 20px;
   color: var(--textColor2);
-  border-radius: 4px !important;
+  border-radius: 30px !important;
 }
