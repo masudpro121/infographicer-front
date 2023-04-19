@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     paddingBottom: '30px'
   },
   prompt: {
-    backgroundColor: '#15B497',
+    backgroundColor: 'rgb(128, 105, 218,0.7)',
     color: 'white',
     padding: '30px',
     fontSize: '20px',
@@ -213,7 +213,7 @@ export const GeneratePdf = ({outputs}) => {
     <Page size="A4" style={styles.page}>
       <View style={styles.imgCont}>
         <Image style={styles.logo} src={Logo} />
-          <View style={{fontSize:'30px', color: '#15B497', marginTop: '20px'}}>
+          <View style={{fontSize:'30px', color: 'rgb(128, 105, 218,0.7)', marginTop: '20px'}}>
             <Text>Infographicer</Text>
         </View>
       </View>
