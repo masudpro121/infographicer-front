@@ -283,7 +283,6 @@ const fakeOutputs = [
         }
         
         </div>
-        {/* output  */}
         {
             isLoading && (
               <div>
@@ -293,7 +292,7 @@ const fakeOutputs = [
         }
 
         {
-          fakeOutputs && <Cards data={fakeOutputs} />
+          outputs && <Cards data={outputs} />
         }
     
         

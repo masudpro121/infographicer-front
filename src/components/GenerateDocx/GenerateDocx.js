@@ -40,7 +40,7 @@ export default function GenerateDocx({outputs}) {
     };
   return (
     <div>
-        <button onClick={generate}>Export Docx</button>
+        <button onClick={generate}>Download Docx</button>
     </div>
   )
 

@@ -4,6 +4,7 @@
     padding: 20px;
     border-radius: 15px;
     box-shadow: 10px 10px 0 0 rgba(218, 105, 212, 0.4), 10px 10px 0 0 rgb(128, 105, 218,0.7);
+    position: relative;
              
 }
 
@@ -20,7 +21,20 @@
    word-wrap: break-word;
 
 }
-
+.mycard .del{ 
+    display: none;
+}
+.mycard:hover .del{
+    display: block;
+    font-size: 20px;
+    position: absolute;
+    top: 0;
+    right: -10px;
+    background-color: #FF7272;
+    color: white;
+    padding: 1px 7px 3px;
+    border-radius: 5px;
+}
 .modal-header{
     background: linear-gradient(to right,  #cb7cd0 , #8069da);
     color: white;

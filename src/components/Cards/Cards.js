@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { ToastContainer, toast } from 'react-toastify';
-
+import {AiOutlineDelete} from 'react-icons/ai'
 import "./cards.css"
 import wordwrap from 'wordwrap';
-function Card({data:{prompt,value}}) {
+import { MyContext } from '../../App';
+
+function Card({data:{id, prompt,value}}) {
+  const {outputs, setOutputs} = useContext(MyContext)
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -19,16 +22,21 @@ function Card({data:{prompt,value}}) {
     handleClose()
     toast.success("Copied! "+ prompt.split(" ").slice(0,3).join(" ")+"...")
   }
-  const formatText = (text) => {
-    const formattedText = text.replace(/\.\s/g, ".\n");
-    return formattedText
-  }
+ const handleDelete = (cardId,e) =>{
+  e.stopPropagation()
+  const filtered = outputs.filter(i=>i.id != cardId)
+  setOutputs(filtered)
+ }
+
   return value && (
     <>
 
         <div className='mycard' onClick={handleShow}>
           <div className='s-prompt'>{shortPrompt}</div>
           <div className='s-value'  >{shortValue}</div>
+          <div className="del" onClick={(e)=>handleDelete(id, e)} >
+            <AiOutlineDelete />
+          </div>
         </div>
 
       <Modal size='lg' show={show} onHide={handleClose} centered>

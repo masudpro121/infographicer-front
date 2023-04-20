@@ -112,6 +112,8 @@
     display: flex;
     justify-content: space-between;
     margin-top: 15px;
+    flex-flow: wrap;
+    gap: 10px;
 }
 
 .generate-btns .download-all{
