@@ -9,7 +9,7 @@ export default function GenerateDocx({outputs}) {
             sections: [
                 {
                     children: [new Paragraph({
-                        text: "InfoGraphics",
+                        text: "Infographicer",
                         heading: HeadingLevel.TITLE,
                         bold: true
                     }),

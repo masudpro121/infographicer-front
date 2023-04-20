@@ -2,44 +2,40 @@
     text-decoration: none;
     color: black
 }
-.nav{
-    width: 230px;
+.mynav{
     height: 100vh;
-    /* box-shadow: 0 0 1px 1px rgb(224, 223, 223); */
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
     background: linear-gradient(to bottom, #251237 , #322b38 );
     position: relative;
 }
-
-.nav .text{
+.mynav .tabs{
+    width: 200px
+}
+.mynav .text{
     color: white;
 }
 
-.nav .logo{
+.mynav .logo{
     display: flex;
     justify-content: center;
     margin-bottom: 30px;
 }
-.nav .logo img{
+.mynav .logo img{
     width: 70px;
     height: 70px;
 }
 
-.nav svg{
+.mynav svg{
     color: #959BA5;
     font-size: 1.4rem;
 }
 
-.nav .tabs .tab{
+.mynav .tabs .tab{
     display: flex;
     padding: 10px 10px;
     gap: 10px;
-    margin-left: 15px;
 }
 
-.nav .underline{
+.mynav .underline{
     margin-top: 20px;
     margin-bottom: 20px;
     width: 70%;
@@ -48,7 +44,7 @@
     margin-left: auto;
     margin-right: auto;
 }
-.nav .upgrade{
+.mynav .upgrade{
     color: white;
     padding: 12px 17px;
     margin: 20px;
@@ -59,10 +55,10 @@
     position: absolute;
     bottom: 20px;
 }
-.nav .upgrade small{
+.mynav .upgrade small{
     color: var(--secondaryColor);
 }
-.nav .upgrade button{
+.mynav .upgrade button{
     font-size: 14px;
     margin-top: 10px;
 }
@@ -74,11 +70,10 @@
 .upgrade img{
     position: absolute;
     bottom: 10px;
-    top: -80px;
-    left: 35px;
+    right: -30px;
 }
 @media only screen and (max-width: 500px){
-    .nav{
+    .mynav{
         display: none!important;
     }
 }

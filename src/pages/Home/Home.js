@@ -22,7 +22,9 @@ function Home() {
   
   useEffect(()=>{
       if(output.value){
-        setOutputs([...outputs, output])
+        const unordered = [...outputs, output]
+        const ordered = unordered.sort((a, b)=>a.id - b.id)
+        setOutputs(ordered)
       setIsLoading(false)
       }
   },[output])
@@ -42,8 +44,7 @@ function Home() {
 
 
 const generateResult = async () => {
-  // setInputs([{ id: 0, prompt: '' }])
-  setIsLoading(true)
+    setIsLoading(true)
   setOutputs([])
   inputs.forEach( inp => {
     if(inp.prompt){
@@ -184,8 +185,8 @@ const fakeOutputs = [
   },
   {
     id: 3, 
-    prompt:'I Won the 1968 Boston Marathon. And Ran Many More. After the Bombs, Everything Changed',
-    value:`More than a half-century ago I ran each Boston Marathon consumed by thoughts of winning. In April 1968, I actually achieved that impossible dream.
+    prompt:'11111111111111111111111111111111111111111111111111111111111111111111111111111111111111I Won the 1968 Boston Marathon. And Ran Many More. After the Bombs, Everything Changed',
+    value:`zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaMore than a half-century ago I ran each Boston Marathon consumed by thoughts of winning. In April 1968, I actually achieved that impossible dream.
 
     These days, 55 years later, I’m still running Boston. Mainly to give thanks. So many thanks. It doesn’t matter how slowly I cover the course, or where I finish. The miracle is that I can still run 26.2 miles on foot from rural Hopkinton to downtown Boston’s Copley Square.
     
@@ -242,7 +243,6 @@ const fakeOutputs = [
       </div>
         <div className='prompt mt-3 mb-4'>
           <h6>Prompt</h6>
-          <small className="surprise">Surprise me</small>
         </div>
         <div className='inputs-cont'>
           <div className='inputs'>
@@ -269,7 +269,7 @@ const fakeOutputs = [
         </div>
         <div className="generate-btns">
         <div >
-          <button onClick={generateResult}>Generate</button>
+          {!isLoading && <button onClick={generateResult}>Generate</button>}
         </div>
         {
           outputs.length > 0 && outputs[0].value && <GenerateDocx outputs={outputs} />
@@ -277,7 +277,7 @@ const fakeOutputs = [
         {
           outputs.length > 0 && outputs[0].value && <div className='download-all'>
           <PDFDownloadLink document={<GeneratePdf outputs={outputs} />} fileName={'Infographicer_'+new Date().toLocaleDateString()}> 
-          {({loading})=> <button>{loading?'Loading..':'Download All'}</button>}
+          {({loading})=> <button>{loading?'Loading..':'Download PDF'}</button>}
           </PDFDownloadLink>
         </div>
         }
@@ -293,7 +293,7 @@ const fakeOutputs = [
         }
 
         {
-          outputs && <Cards data={outputs} />
+          fakeOutputs && <Cards data={fakeOutputs} />
         }
     
         

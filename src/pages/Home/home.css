@@ -1,5 +1,6 @@
 .home{
-    margin: 0 20px
+    margin: 0 20px;
+    z-index: 1
 }
 .home .sec1{
     display: flex;
@@ -76,7 +77,7 @@
     display: none;
     font-size: 12px;
     padding: 10px 16px;
-    /* background-color: rgb(240, 82, 82); */
+    background: #FF7272 !important;
     border-radius: 10px!important;
     z-index: 1;
     position: absolute;

@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 import RocketImg from '../../assets/img/rocket.png'
 export default function Navbar() {
   return (
-    <div className="nav">
+    <div className="mynav">
         <div className="logo">
           <img src={Logo} alt="Logo" />
         </div>
@@ -25,7 +25,7 @@ export default function Navbar() {
             </div>
             </Link>
 
-            <Link to="/documentation" className='link'>
+            <Link to="/" className='link'>
               <div className='tab'>
                 <div className="icon">
                   <HiOutlineDocumentText />
@@ -37,7 +37,7 @@ export default function Navbar() {
             </Link>
            
             
-            <Link to="/services" className='link'>
+            <Link to="/" className='link'>
             <div className='tab'>
               <div className="icon">
                 <MdMiscellaneousServices />
@@ -47,7 +47,7 @@ export default function Navbar() {
               </div>
             </div>
             </Link>
-            <Link to="/documentation" className='link'>
+            <Link to="/" className='link'>
               <div className='tab'>
                 <div className="icon">
                   <MdOutlinePrivacyTip />
@@ -58,7 +58,7 @@ export default function Navbar() {
               </div>
             </Link>
             <div className="underline"></div>
-            <Link to="/settings" className='link'>
+            <Link to="/" className='link'>
             <div className='tab'>
               <div className="icon">
                 <MdMiscellaneousServices />

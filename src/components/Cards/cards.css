@@ -3,25 +3,22 @@
     background-color: var(--bgColor2);
     padding: 20px;
     border-radius: 15px;
-    /* box-shadow: 10px 10px 0 0 linear-gradient(to right,  #cb7cd0 , #8069da);; */
-    /* box-shadow: 10px 10px 0 0 rgba(218, 105, 212, 0.4), 
-              10px 10px 0 0 rgb(128, 105, 218,0.7)  */
     box-shadow: 10px 10px 0 0 rgba(218, 105, 212, 0.4), 10px 10px 0 0 rgb(128, 105, 218,0.7);
              
 }
-/* .cardUp{
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08), inset 0 -2px 0 rgba(255, 255, 255, 0.2);
-    background-image: linear-gradient(to right, #f12711, #f5af19);
-    position: inherit;
-} */
+
 .mycard .s-prompt{
     font-weight: 700;
     border-radius: 5px 5px 0 0;
+    word-wrap: break-word;
+
 }
 .mycard .s-value{
     margin-top: 10px;
     font-size: 15px;
    line-height: 28px;
+   word-wrap: break-word;
+
 }
 
 .modal-header{
@@ -31,8 +28,12 @@
     padding: 30px !important;
 }
 
-.model-body{
+.modal-body{
     padding: 30px !important;
+}
+.modal-body pre{
+    white-space: pre-wrap;
+    word-wrap: break-word;
 }
 
 .Toastify__toast{
