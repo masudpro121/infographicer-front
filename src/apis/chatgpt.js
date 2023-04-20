@@ -10,7 +10,7 @@ export const generateData = (title) => {
     const response = openai.createCompletion({
         model: "text-davinci-003",
         prompt: title,
-        max_tokens: 100000,
+        max_tokens: 9999,
         temperature: 0,
       });
     return response      
