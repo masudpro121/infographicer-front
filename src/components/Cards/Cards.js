@@ -59,6 +59,9 @@ function Card({data:{id, prompt,value}}) {
           <button onClick={handleCopy}>
             Copy text
           </button>
+          <button onClick={handleClose}>
+            Close
+          </button>
         </Modal.Footer>
       </Modal>
     </>
