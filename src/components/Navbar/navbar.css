@@ -3,9 +3,9 @@
     color: black
 }
 .mynav{
-    height: 100vh;
     background: linear-gradient(to bottom, #251237 , #322b38 );
     position: relative;
+    min-height: 100vh;
 }
 .mynav .tabs{
     width: 220px

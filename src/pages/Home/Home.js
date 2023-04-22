@@ -13,6 +13,7 @@ import {RiMessage3Line} from 'react-icons/ri'
 import {MdOutlineNotificationsActive} from 'react-icons/md'
 import {FiSearch} from 'react-icons/fi'
 import GenerateDocx from '../../components/GenerateDocx/GenerateDocx';
+import GeneratePptx from '../../components/GeneratePptx/GeneratePptx';
 
 function Home() {
   const {outputs, setOutputs} = useContext(MyContext)
@@ -274,6 +275,9 @@ const fakeOutputs = [
         {
           outputs.length > 0 && outputs[0].value && <GenerateDocx outputs={outputs} />
         }
+        {/* {
+          outputs.length > 0 && outputs[0].value && <GeneratePptx outputs={outputs} />
+        } */}
         {
           outputs.length > 0 && outputs[0].value && <div className='download-all'>
           <PDFDownloadLink document={<GeneratePdf outputs={outputs} />} fileName={'Infographicer_'+new Date().toLocaleDateString()}> 
