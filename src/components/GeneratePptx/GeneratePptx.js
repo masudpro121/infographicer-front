@@ -14,14 +14,19 @@ export default function GeneratePptx({outputs}) {
         const packs = []
         let s =[]
         lines.forEach((l,id)=>{
-             const splitted = l.split(' ')
-             if(s.length+splitted.length<250){
+             let splitted = l.split(' ')
+             if((s.length+splitted.length)<250){
+              console.log('if', id);
                 s = [...s, "\n", ...splitted]
              }else{
+              console.log('else', id);
                 packs.push(s)
-                s=splitted
+                s=[...splitted]
+                splitted =[]
              }
+             
              if(lines.length == id+1){
+                packs.push(s)
                 packs.push(splitted)
              }
         })
