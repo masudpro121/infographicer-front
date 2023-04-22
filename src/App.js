@@ -4,10 +4,13 @@ import { createContext, useState } from 'react';
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import Home from './pages/Home/Home';
 import GeneratePdfViewer from './components/GeneratePdf/GeneratePdf';
+import { Signin, Signup } from './components/Auth/Auth';
 
 // Router 
 const router = createBrowserRouter([
   { path: "/documentation", element: <GeneratePdfViewer/> },
+  { path: "/signup", element: <Signup/> },
+  { path: "/signin", element: <Signin/> },
   { path: "/", element: <Home/> },
 ]);
 
