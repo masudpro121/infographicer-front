@@ -275,9 +275,9 @@ const fakeOutputs = [
         {
           outputs.length > 0 && outputs[0].value && <GenerateDocx outputs={outputs} />
         }
-        {/* {
+        {
           outputs.length > 0 && outputs[0].value && <GeneratePptx outputs={outputs} />
-        } */}
+        }
         {
           outputs.length > 0 && outputs[0].value && <div className='download-all'>
           <PDFDownloadLink document={<GeneratePdf outputs={outputs} />} fileName={'Infographicer_'+new Date().toLocaleDateString()}> 
