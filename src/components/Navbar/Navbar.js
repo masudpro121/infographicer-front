@@ -58,13 +58,13 @@ export default function Navbar() {
               </div>
             </Link>
             <div className="underline"></div>
-            <Link to="/" className='link'>
+            <Link to="/signup" className='link'>
             <div className='tab'>
               <div className="icon">
                 <MdMiscellaneousServices />
               </div>
               <div className="text">
-                Settings
+                Sign up
               </div>
             </div>
             </Link>
