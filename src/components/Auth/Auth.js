@@ -6,7 +6,7 @@ import Google from '../../assets/img/google.png'
 import Facebook from '../../assets/img/facebook.png'
 import { Link } from 'react-router-dom'
 
-function signup() {
+export const Signup =()=> {
     return (
       <div className='auth-cont'>
         <div className='auth signup'>
@@ -61,7 +61,7 @@ function signup() {
     )
 }
   
-function signin() {
+export const Signin =()=> {
     return (
       <div className="auth-cont">
         <div className='auth signin'>
@@ -111,7 +111,7 @@ function signin() {
   
 
 
-export const Signup = withNavbar(signup)
-export const Signin = withNavbar(signin)
+
+
 
   

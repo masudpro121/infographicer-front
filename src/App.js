@@ -8,13 +8,14 @@ import { Signin, Signup } from './components/Auth/Auth';
 import Projects from './pages/Projects/Projects';
 
 // Router 
+const isLoggedin = false
 const router = createHashRouter([
   { path: "/documentation", element: <GeneratePdfViewer/> },
   { path: "/signup", element: <Signup/> },
   { path: "/signin", element: <Signin/> },
-  { path: "/projects", element: <Projects/> },
-  { path: "/", element: <Home/> },
-  { path: "*", element: <Home/> },
+  { path: "/projects", element: isLoggedin?<Projects/>:<Signup/> },
+  { path: "/", element: isLoggedin?<Home/>:<Signup/> },
+  { path: "*", element: isLoggedin?<Home/>:<Signup/> },
 ]);
 
 // App Started 
