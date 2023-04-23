@@ -243,7 +243,10 @@ const fakeOutputs = [
         <h3>Infographicer</h3>
       </div>
         <div className='prompt mt-3 mb-4'>
-          <h6>Prompt</h6>
+          <h6>Project Name</h6>
+        </div>
+        <div className='prompt mt-3 mb-4'>
+          <h6>Project Tag</h6>
         </div>
         <div className='inputs-cont'>
           <div className='inputs'>
