@@ -27,3 +27,40 @@
     border-radius: 15px;
     padding: 20px;
   }
+
+
+.projects .top{
+    display: flex;
+    align-items: center;
+    background-color: var(--bgColor2);
+    margin-bottom: 20px;
+    padding: 15px 20px;
+    gap: 20px;
+    border-radius: 10px;
+}
+
+.projects .top h5{
+    font-weight: bold;
+}
+
+.projects .search{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(250px, 350px));
+    row-gap: 30px;
+    column-gap: 70px;
+    margin-bottom: 30px;
+    
+}
+.projects .search div{
+    position: relative;
+}
+.projects .search input{
+    padding-left: 40px;
+    width: 100%;
+}
+.projects .search input::before{
+    content: '';
+    width: 30px;
+    height: 30px;
+    background-color: red;
+}
