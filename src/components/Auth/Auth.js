@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import withNavbar from '../../hocs/withNavbar'
 import "./auth.css"
 import Logo from '../../assets/img/logo.png'
 import Google from '../../assets/img/google.png'
 import Facebook from '../../assets/img/facebook.png'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { MyContext } from '../../App'
 
 export const Signup =()=> {
+   
     return (
       <div className='auth-cont'>
         <div className='auth signup'>
@@ -62,6 +64,8 @@ export const Signup =()=> {
 }
   
 export const Signin =()=> {
+    const {setIsLoggedIn} = useContext(MyContext)
+    const navigate = useNavigate();
     return (
       <div className="auth-cont">
         <div className='auth signin'>
@@ -89,8 +93,8 @@ export const Signin =()=> {
                     <input id="password" type="password" />
                 </div>
             </div>
-            <div className="mybtn">
-                <button>Sign in</button>
+            <div className="mybtn" onClick={()=>{setIsLoggedIn(true); navigate('/')}}>
+                <button >Sign in</button>
             </div>
             <div className="f-auth mt-3">
                 <div >

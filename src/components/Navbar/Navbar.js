@@ -1,13 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import "./navbar.css"
 import Logo from "../../assets/img/logo.png"
 import { BiHomeSmile } from 'react-icons/bi';
 import { HiOutlineDocumentText } from 'react-icons/hi';
 import { IoIosLogOut } from 'react-icons/io';
 import { MdMiscellaneousServices, MdOutlinePrivacyTip } from 'react-icons/md';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import RocketImg from '../../assets/img/rocket.png'
+import { MyContext } from '../../App';
 export default function Navbar() {
+  const {setIsLoggedIn} = useContext(MyContext)
+  const navigate = useNavigate()
   return (
     <div className="mynav">
         <div className="logo">
@@ -58,13 +61,13 @@ export default function Navbar() {
               </div>
             </Link>
             <div className="underline"></div>
-            <Link to="/signup" className='link'>
+            <Link to="/" className='link'>
             <div className='tab'>
               <div className="icon">
                 <MdMiscellaneousServices />
               </div>
               <div className="text">
-                Sign up
+                Settings
               </div>
             </div>
             </Link>
@@ -72,7 +75,7 @@ export default function Navbar() {
               <div className="icon">
                 <IoIosLogOut />
               </div>
-              <div className="text">
+              <div className="text" style={{cursor:'pointer'}} onClick={()=>{setIsLoggedIn(false); navigate('/')}}>
                 Logout
               </div>
             </div>
