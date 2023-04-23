@@ -14,9 +14,11 @@
   text-decoration: none;
   border: none;
   font-family: var(--primary-font);
-  margin-bottom: 0!important;
+ 
  }
-
+p{
+  margin-bottom: 0!important;
+}
  .app{
   box-sizing: border-box;
 }
