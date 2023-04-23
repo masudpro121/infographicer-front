@@ -53,22 +53,8 @@ function Projects() {
           <button>Search</button>
         </div>
       </div>
-      {/* <div className="p-cards">
-        {
-          myprojects.map((project,id)=>{
-            return (
-              <div key={project.name+id} className='p-card'>
-                <div className="p-bg"></div>
-                <div className="p-content">
-                  <h6>{project.name}</h6>
-                  <p>{project.content}</p>
-                </div>
-              </div>
-            )
-          })
-        }
-      </div> */}
-      <Cards data={fakeprojects}/>
+     
+      <Cards data={myprojects}/>
       <div>
        {
         Math.ceil(fakeprojects.length/6) >1 && <Paginate totalPage={Math.ceil(fakeprojects.length/perPageItem)} />

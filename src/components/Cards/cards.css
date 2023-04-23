@@ -1,4 +1,70 @@
-.mycard{
+
+.modal-header{
+    background: var(--primaryGradient);
+    color: white;
+    font-weight: 500;
+    padding: 30px !important;
+}
+
+
+.modal-body{
+    background: var(--primaryGradient);
+    border-radius: 15px;
+}
+.modal-head{
+    padding: 10px 0;
+    margin-left: 10px;
+}
+.modal-inner{
+    background-color: var(--bgColor2);
+    padding: 20px;
+    border-radius: 15px;
+}
+.modal-body pre{
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+
+.mycards{
+    margin-top: 20px;
+    display: grid;
+    column-gap: 20px;
+    row-gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    flex-flow: wrap;
+}
+
+.modal-content{
+    background-color: transparent!important;
+}
+
+
+.c-card{
+    position: relative;
+    height: 250px;
+    cursor: pointer;
+}
+.c-bg{
+    background: var(--primaryGradient);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    border-radius: 15px;
+}
+.c-content{
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 15px;
+    padding: 20px;
+  }
+
+
+  .mycard{
     cursor: pointer;
     background-color: var(--bgColor2);
     padding: 20px;
@@ -8,23 +74,23 @@
              
 }
 
-.mycard .s-prompt{
+.c-card .s-prompt{
     font-weight: 700;
     border-radius: 5px 5px 0 0;
     word-wrap: break-word;
 
 }
-.mycard .s-value{
+.c-card .s-value{
     margin-top: 10px;
     font-size: 15px;
    line-height: 28px;
    word-wrap: break-word;
 
 }
-.mycard .del{ 
+.c-card .del{ 
     display: none;
 }
-.mycard:hover .del{
+.c-card:hover .del{
     display: block;
     font-size: 20px;
     position: absolute;
@@ -35,20 +101,13 @@
     padding: 1px 7px 3px;
     border-radius: 5px;
 }
-.modal-header{
-    background: var(--primaryGradient);
-    color: white;
-    font-weight: 500;
-    padding: 30px !important;
-}
 
-.modal-body{
-    padding: 30px !important;
-}
-.modal-body pre{
-    white-space: pre-wrap;
-    word-wrap: break-word;
-}
+
+
+
+
+
+/* ----------------------  */
 
 .Toastify__toast{
     min-height: 0;
@@ -60,11 +119,3 @@
     fill: var(--primary-color)
 }
 /* ----------------------  */
-.mycards{
-    margin-top: 20px;
-    display: grid;
-    column-gap: 20px;
-    row-gap: 30px;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    flex-flow: wrap;
-}

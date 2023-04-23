@@ -272,6 +272,7 @@ const fakeOutputs = [
         <div >
           {!isLoading && <button onClick={generateResult}>Generate</button>}
         </div>
+        <div className='other-btns'>
         {
           outputs.length > 0 && outputs[0].value && <GenerateDocx outputs={outputs} />
         }
@@ -279,12 +280,13 @@ const fakeOutputs = [
           outputs.length > 0 && outputs[0].value && <GeneratePptx outputs={outputs} />
         }
         {
-          outputs.length > 0 && outputs[0].value && <div className='download-all'>
+          outputs.length > 0 && outputs[0].value && <div >
           <PDFDownloadLink document={<GeneratePdf outputs={outputs} />} fileName={'Infographicer_'+new Date().toLocaleDateString()}> 
           {({loading})=> <button>{loading?'Loading..':'Download PDF'}</button>}
           </PDFDownloadLink>
         </div>
         }
+        </div>
         
         </div>
         {
