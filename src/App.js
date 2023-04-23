@@ -1,19 +1,20 @@
 import './App.css';
 import { Button } from 'react-bootstrap';
 import { createContext, useState } from 'react';
-import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import {createBrowserRouter, createHashRouter, RouterProvider} from "react-router-dom";
 import Home from './pages/Home/Home';
 import GeneratePdfViewer from './components/GeneratePdf/GeneratePdf';
 import { Signin, Signup } from './components/Auth/Auth';
 import Projects from './pages/Projects/Projects';
 
 // Router 
-const router = createBrowserRouter([
+const router = createHashRouter([
   { path: "/documentation", element: <GeneratePdfViewer/> },
   { path: "/signup", element: <Signup/> },
   { path: "/signin", element: <Signin/> },
   { path: "/projects", element: <Projects/> },
   { path: "/", element: <Home/> },
+  { path: "*", element: <Home/> },
 ]);
 
 // App Started 
