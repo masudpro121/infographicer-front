@@ -5,12 +5,14 @@ import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import Home from './pages/Home/Home';
 import GeneratePdfViewer from './components/GeneratePdf/GeneratePdf';
 import { Signin, Signup } from './components/Auth/Auth';
+import Projects from './pages/Projects/Projects';
 
 // Router 
 const router = createBrowserRouter([
   { path: "/documentation", element: <GeneratePdfViewer/> },
   { path: "/signup", element: <Signup/> },
   { path: "/signin", element: <Signin/> },
+  { path: "/projects", element: <Projects/> },
   { path: "/", element: <Home/> },
 ]);
 

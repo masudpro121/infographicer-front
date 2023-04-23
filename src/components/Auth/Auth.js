@@ -4,10 +4,12 @@ import "./auth.css"
 import Logo from '../../assets/img/logo.png'
 import Google from '../../assets/img/google.png'
 import Facebook from '../../assets/img/facebook.png'
+import { Link } from 'react-router-dom'
 
 function signup() {
     return (
-      <div className='auth'>
+      <div className='auth-cont'>
+        <div className='auth signup'>
         <div className="card-bg"></div>
         <div className="card-content">
             <div className="logo">
@@ -15,7 +17,11 @@ function signup() {
             </div>
             <div className="card-title mb-3">
                 <h5>Create an account</h5>
-                <small>Already have an account? <span>Log in</span></small> 
+                <small>Already have an account? 
+                    <span>
+                        <Link to="/signin"> Log in</Link>
+                    </span>
+                </small> 
             </div>
             <div className="myform">
                 <div>
@@ -35,7 +41,7 @@ function signup() {
                     </select>
                 </div>
             </div>
-            <div className="mt-3">
+            <div className="mybtn">
                 <button>Create an account</button>
             </div>
             <div className="f-auth mt-3">
@@ -51,20 +57,27 @@ function signup() {
             </div>
         </div>
       </div>
+      </div>
     )
 }
   
 function signin() {
     return (
-      <div className='auth'>
+      <div className="auth-cont">
+        <div className='auth signin'>
         <div className="card-bg"></div>
         <div className="card-content">
             <div className="logo">
                 <img src={Logo} alt="logo" />
             </div>
             <div className="card-title mb-3">
-                <h5>Create an account</h5>
-                <small>Already have an account? <span>Log in</span></small> 
+                <h5>Sign in</h5>
+                <small>
+                    Don't have an account?
+                    <span>
+                        <Link to="/signup"> Sign up</Link>
+                    </span>
+                </small> 
             </div>
             <div className="myform">
                 <div>
@@ -75,17 +88,9 @@ function signin() {
                     <label htmlFor="password">Password</label> <br/>
                     <input id="password" type="password" />
                 </div>
-                <div>
-                    <label htmlFor="residence">Country of residence</label> <br/>
-                    <select name="Residence" id="residence">
-                        <option value="saudi">Saudi Arab</option>
-                        <option value="bangladesh">Bangladesh</option>
-                        <option value="pakistan">Pakistan</option>
-                    </select>
-                </div>
             </div>
-            <div className="mt-3">
-                <button>Create an account</button>
+            <div className="mybtn">
+                <button>Sign in</button>
             </div>
             <div className="f-auth mt-3">
                 <div >
@@ -99,6 +104,7 @@ function signin() {
                 </div>
             </div>
         </div>
+      </div>
       </div>
     )
 }
