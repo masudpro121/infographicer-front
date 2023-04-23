@@ -28,7 +28,7 @@ function Projects() {
     <div className='projects'>
       <div className='top'>
         <h5>Projects</h5>
-        <Link to='/'>
+        <Link to='/projects'>
         <button>Create new project</button>
         </Link>
       </div>

@@ -27,8 +27,8 @@ function App() {
     { path: "/documentation", element: <GeneratePdfViewer/> },
     { path: "/signup", element: <Signup/> },
     { path: "/signin", element: <Signin/> },
-    { path: "/projects", element: <Protected isLoggedIn={isLoggedIn}><Projects /></Protected> },
-    { path: "/", element: <Protected isLoggedIn={isLoggedIn}><Home/></Protected> },
+    { path: "/projects", element: <Protected isLoggedIn={isLoggedIn}><Home /></Protected> },
+    { path: "/", element: <Protected isLoggedIn={isLoggedIn}><Projects/></Protected> },
   ]);
   return (
     <div className="app">
