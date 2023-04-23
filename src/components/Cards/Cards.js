@@ -72,7 +72,7 @@ function Card({data:{id, prompt,value}}) {
 
 export default function Cards({data}){
   return (
-    <div className='cards'>
+    <div className='mycards'>
      {
        data && data.map((output, id)=><Card key={id} data={output} />)
      }

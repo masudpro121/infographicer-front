@@ -5,6 +5,7 @@
   --textColor2: #f0f5f0;
   --primary-color: #7b0e9c86;
   --secondaryColor: #959BA5;
+  --primaryGradient: linear-gradient(to right,  #cb7cd0 , #8069da);
   --primary-font: 'Poppins', sans-serif;
 }
  * {
@@ -37,8 +38,12 @@ input[type=text]:focus{
   border: 1px solid var(--primary-color);
 }
 button{
-  background: linear-gradient(to right,  #cb7cd0 , #8069da);
+  background: var(--primaryGradient);
   padding: 6px 20px;
   color: var(--textColor2);
   border-radius: 30px !important;
 }
+
+
+
+

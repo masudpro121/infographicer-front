@@ -36,7 +36,7 @@
     border-radius: 5px;
 }
 .modal-header{
-    background: linear-gradient(to right,  #cb7cd0 , #8069da);
+    background: var(--primaryGradient);
     color: white;
     font-weight: 500;
     padding: 30px !important;
@@ -60,7 +60,7 @@
     fill: var(--primary-color)
 }
 /* ----------------------  */
-.cards{
+.mycards{
     margin-top: 20px;
     display: grid;
     column-gap: 20px;

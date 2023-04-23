@@ -20,8 +20,10 @@ const router = createBrowserRouter([
 export const MyContext = createContext()
 function App() {
   const [outputs, setOutputs] = useState([]);
+  const [currentProjectPage, setCurrentProjectPage] = useState(1);
   const contextValue = {
-    outputs, setOutputs
+    outputs, setOutputs,
+    currentProjectPage, setCurrentProjectPage
   }
   return (
     <div className="app">
