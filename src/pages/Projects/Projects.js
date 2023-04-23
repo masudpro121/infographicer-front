@@ -19,6 +19,47 @@ function Projects() {
         {prompt:'This is prompt 3', value:'',},
       ]
     },
+    {
+      name: 'Project 2',
+      prompts: [
+        {prompt:'This is prompt 1', value:'',},
+        {prompt:'This is prompt 2', value:'',},
+        {prompt:'This is prompt 3', value:'',},
+      ]
+    },
+    {
+      name: 'Project 3',
+      prompts: [
+        {prompt:'This is prompt 1', value:'',},
+        {prompt:'This is prompt 2', value:'',},
+        {prompt:'This is prompt 3', value:'',},
+      ]
+    },
+    {
+      name: 'Project 4',
+      prompts: [
+        {prompt:'This is prompt 1', value:'',},
+        {prompt:'This is prompt 2', value:'',},
+        {prompt:'This is prompt 3', value:'',},
+      ]
+    },
+    {
+      name: 'Project 5',
+      prompts: [
+        {prompt:'This is prompt 1', value:'',},
+        {prompt:'This is prompt 2', value:'',},
+        {prompt:'This is prompt 3', value:'',},
+      ]
+    },
+    {
+      name: 'Project 6',
+      prompts: [
+        {prompt:'This is prompt 1', value:'',},
+        {prompt:'This is prompt 2', value:'',},
+        {prompt:'This is prompt 3', value:'',},
+      ]
+    },
+   
     
 
   ]
@@ -76,9 +117,9 @@ function Projects() {
           })
         }
       </div>
-      <div>
+      <div className='mt-5'>
        {
-        Math.ceil(fakeprojects.length/6) >1 && <Paginate totalPage={Math.ceil(fakeprojects.length/perPageItem)} />
+        Math.ceil(fakeprojects.length/perPageItem) >1 && <Paginate totalPage={Math.ceil(fakeprojects.length/perPageItem)} />
        }
       </div>
     </div>
