@@ -37,13 +37,13 @@ export default function Navbar() {
             </Link>
            
             
-            <Link to="/" className='link'>
+            <Link to="/projects" className='link'>
             <div className='tab'>
               <div className="icon">
                 <MdMiscellaneousServices />
               </div>
               <div className="text">
-                Services
+                Projects
               </div>
             </div>
             </Link>

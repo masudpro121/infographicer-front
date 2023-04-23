@@ -7,7 +7,7 @@
 .p-card{
     position: relative;
     height: 250px;
-    
+    cursor: pointer;
 }
 
 .p-bg{
@@ -26,6 +26,8 @@
     position: absolute;
     border-radius: 15px;
     padding: 20px;
+    box-sizing: border-box;
+    overflow: hidden;
   }
 
 

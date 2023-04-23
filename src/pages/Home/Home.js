@@ -17,8 +17,10 @@ import GeneratePptx from '../../components/GeneratePptx/GeneratePptx';
 
 function Home() {
   const {outputs, setOutputs} = useContext(MyContext)
-  const [inputs, setInputs] = useState([{ id: 0, prompt: '' }]);
+  const [inputs, setInputs] = useState([{ id: 0, prompt: ''}]);
   const [output, setOutput] = useState({});
+  const [projectName, setProjectName] = useState('')
+  const [projectTag, setProjectTag] = useState('')
   const  [isLoading, setIsLoading] = useState(false)
   
   useEffect(()=>{
@@ -243,10 +245,12 @@ const fakeOutputs = [
         <h3>Infographicer</h3>
       </div>
         <div className='prompt mt-3 mb-4'>
-          <h6>Project Name</h6>
+          <h6 style={{width:'150px'}}>Project Name</h6>
+          <input className='proj-input' onChange={(e)=>setProjectName(e.target.value)} type="text" placeholder='Please enter project name'  />
         </div>
         <div className='prompt mt-3 mb-4'>
-          <h6>Project Tag</h6>
+          <h6 style={{width:'150px'}}>Project Tag</h6>
+          <input className='proj-input' onChange={(e)=>setProjectTag(e.target.value)} type="text" placeholder='Please enter project tags. separated by comma ' />
         </div>
         <div className='inputs-cont'>
           <div className='inputs'>
