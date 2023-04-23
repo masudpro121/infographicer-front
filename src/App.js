@@ -23,7 +23,7 @@ function App() {
     isLoggedIn, setIsLoggedIn
   }
 
-  const router = createBrowserRouter([
+  const router = createHashRouter([
     { path: "/documentation", element: <GeneratePdfViewer/> },
     { path: "/signup", element: <Signup/> },
     { path: "/signin", element: <Signin/> },
