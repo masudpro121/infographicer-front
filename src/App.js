@@ -2,10 +2,10 @@ import './App.css';
 import { Button } from 'react-bootstrap';
 import { createContext, useContext, useState } from 'react';
 import {createBrowserRouter, createHashRouter, Navigate, RouterProvider} from "react-router-dom";
-import Home from './pages/Home/Home';
 import GeneratePdfViewer from './components/GeneratePdf/GeneratePdf';
 import { Signin, Signup } from './components/Auth/Auth';
 import Projects from './pages/Projects/Projects';
+import Home from './pages/Home/Home';
 
 // Router 
 
@@ -27,9 +27,10 @@ function App() {
     { path: "/documentation", element: <GeneratePdfViewer/> },
     { path: "/signup", element: <Signup/> },
     { path: "/signin", element: <Signin/> },
-    { path: "/projects", element: <Protected isLoggedIn={isLoggedIn}><Home /></Protected> },
-    { path: "/", element: <Protected isLoggedIn={isLoggedIn}><Projects/></Protected> },
+    { path: "/projects", element: <Protected isLoggedIn={isLoggedIn}><Projects /></Protected> },
+    { path: "/", element: <Protected isLoggedIn={isLoggedIn}><Home/></Protected> },
   ]);
+  
   return (
     <div className="app">
         <MyContext.Provider value={contextValue} >
