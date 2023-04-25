@@ -140,7 +140,7 @@ export const Signin =()=> {
             </div>
         </div>
       </div>
-      <ToastContainer autoClose={200000000000} theme='dark' />
+      <ToastContainer autoClose={2000} theme='dark' />
       </div>
     )
 }
