@@ -14,6 +14,7 @@ import {MdOutlineNotificationsActive} from 'react-icons/md'
 import {FiSearch} from 'react-icons/fi'
 import GenerateDocx from '../../components/GenerateDocx/GenerateDocx';
 import GeneratePptx from '../../components/GeneratePptx/GeneratePptx';
+import { saveProject } from '../../apis/server';
 
 function Projects() {
   const {outputs, setOutputs} = useContext(MyContext)
@@ -65,6 +66,14 @@ const generateResult = async () => {
 const removeField = (id) =>{
   const filtered = inputs.filter(inp=>inp.id != id)
   setInputs(filtered)
+}
+
+const handleSave = () => {
+  saveProject({name: projectName, tag:projectTag, prompts: outputs})
+  .then(res=>res.json())
+  .then(res=>{
+    toast.success("Saved")
+  })
 }
 
 const fakeOutputs = [
@@ -281,13 +290,16 @@ const fakeOutputs = [
         </div>
         <div className='other-btns'>
         {
-          outputs.length > 0 && outputs[0].value && <GenerateDocx outputs={outputs} />
+          outputs.length > 0  && <button onClick={handleSave}>Save</button>
         }
         {
-          outputs.length > 0 && outputs[0].value && <GeneratePptx outputs={outputs} />
+          outputs.length > 0  && <GenerateDocx outputs={outputs} />
         }
         {
-          outputs.length > 0 && outputs[0].value && <div >
+          outputs.length > 0  && <GeneratePptx outputs={outputs} />
+        }
+        {
+          outputs.length > 0  && <div >
           <PDFDownloadLink document={<GeneratePdf outputs={outputs} />} fileName={'Infographicer_'+new Date().toLocaleDateString()}> 
           {({loading})=> <button>{loading?'Loading..':'Download PDF'}</button>}
           </PDFDownloadLink>

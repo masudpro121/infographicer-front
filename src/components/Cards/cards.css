@@ -109,13 +109,5 @@
 
 /* ----------------------  */
 
-.Toastify__toast{
-    min-height: 0;
-}
-.Toastify__progress-bar--success{
-    background-color: var(--primary-color);
-}
-.Toastify__toast svg{
-    fill: var(--primary-color)
-}
+
 /* ----------------------  */

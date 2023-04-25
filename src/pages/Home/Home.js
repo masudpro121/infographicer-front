@@ -1,14 +1,22 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import withNavbar from '../../hocs/withNavbar'
 import './home.css'
 import Paginate from '../../components/Paginate/Paginate'
 import { useContext } from 'react'
 import { MyContext } from '../../App'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Footer from '../../components/Footer/Footer'
+import { getProjects, validate } from '../../apis/server'
+import { getCookie } from '../../utils/cookie'
 
 function Home() {
-  const {currentProjectPage} = useContext(MyContext)
+  const [projects, setProjects] = useState([])
+  const {currentProjectPage, setIsLoggedIn, isLoggedIn} = useContext(MyContext)
+  useEffect(()=>{
+    getProjects()
+    .then(res=>res.json())
+    .then(res=>setProjects(res))
+  },[])
   const perPageItem = 4
    const fakeprojects = [
     {
@@ -63,8 +71,10 @@ function Home() {
     
 
   ]
-  const myprojects = fakeprojects.slice((currentProjectPage*perPageItem)-perPageItem, currentProjectPage*perPageItem)
+  const myprojects = projects.slice((currentProjectPage*perPageItem)-perPageItem, currentProjectPage*perPageItem)
+
   
+console.log(isLoggedIn, 'isLoggedin');
   return (
     <div className='home'>
       <div className='top'>
@@ -108,7 +118,9 @@ function Home() {
                   <h6>{project.name}</h6>
                   <div className='mt-3'>
                     {
-                      project.prompts.map(p=><p>{p.prompt}</p>)
+                      project.prompts.map((p, id)=><div key={p+Math.random()*9999}>
+                        <p><span>{`•  `}</span>{p.prompt}</p>
+                      </div>)
                     }
                   </div>
                 </div>
@@ -119,7 +131,7 @@ function Home() {
       </div>
       <div className='mt-5'>
        {
-        Math.ceil(fakeprojects.length/perPageItem) >1 && <Paginate totalPage={Math.ceil(fakeprojects.length/perPageItem)} />
+        Math.ceil(projects.length/perPageItem) >1 && <Paginate totalPage={Math.ceil(fakeprojects.length/perPageItem)} />
        }
       </div>
        

@@ -20,14 +20,14 @@ function Paginate({totalPage}) {
             <Pagination.Prev onClick={() => handlePageChange(currentProjectPage-1)} />
             {
               prevPages.map(p=>{
-                return p>=1 &&  <Pagination.Item onClick={() => handlePageChange(p)} >{p}</Pagination.Item>
+                return p>=1 &&  <Pagination.Item key={p+Math.random()*999999} onClick={() => handlePageChange(p)} >{p}</Pagination.Item>
               })
             }
             <Pagination.Item onClick={() => handlePageChange(currentProjectPage)} active={true}>
               {currentProjectPage}</Pagination.Item>
             {
               nextPages.map(p=>{
-                return p<=totalPage && <Pagination.Item onClick={() => handlePageChange(p)} >{p}</Pagination.Item>
+                return p<=totalPage && <Pagination.Item key={p+Math.random()*999999} onClick={() => handlePageChange(p)} >{p}</Pagination.Item>
               })
             }
             <Pagination.Next onClick={() => handlePageChange(currentProjectPage+1)}/>

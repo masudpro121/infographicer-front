@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import withNavbar from '../../hocs/withNavbar'
 import "./auth.css"
 import Logo from '../../assets/img/logo.png'
@@ -6,9 +6,25 @@ import Google from '../../assets/img/google.png'
 import Facebook from '../../assets/img/facebook.png'
 import { Link, useNavigate } from 'react-router-dom'
 import { MyContext } from '../../App'
+import { signin, signup } from '../../apis/server'
+import { setCookie } from '../../utils/cookie'
+import { ToastContainer, toast } from 'react-toastify'
 
 export const Signup =()=> {
-   
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [residence, setResidence] = useState('saudi')
+    const navigate = useNavigate();
+    const handleSignup = () => {
+        signup({email, password, residence})
+        .then((res)=>res.json())
+        .then(res=>{
+            console.log(res);
+            if(res.status=='ok'){
+                navigate('/signin')
+            }
+        })
+    }
     return (
       <div className='auth-cont'>
         <div className='auth signup'>
@@ -28,15 +44,15 @@ export const Signup =()=> {
             <div className="myform">
                 <div>
                     <label htmlFor="email">Email address</label> <br/>
-                    <input id="email" type="email" />
+                    <input onChange={(e)=>setEmail(e.target.value)} id="email" type="email" />
                 </div>
                 <div>
                     <label htmlFor="password">Password</label> <br/>
-                    <input id="password" type="password" />
+                    <input onChange={(e)=>setPassword(e.target.value)} id="password" type="password" />
                 </div>
                 <div>
                     <label htmlFor="residence">Country of residence</label> <br/>
-                    <select name="Residence" id="residence">
+                    <select onChange={(e)=>setResidence(e.target.value)} name="Residence" id="residence">
                         <option value="saudi">Saudi Arab</option>
                         <option value="bangladesh">Bangladesh</option>
                         <option value="pakistan">Pakistan</option>
@@ -44,7 +60,7 @@ export const Signup =()=> {
                 </div>
             </div>
             <div className="mybtn">
-                <button>Create an account</button>
+                <button onClick={handleSignup}>Create an account</button>
             </div>
             <div className="f-auth mt-3">
                 <div >
@@ -64,8 +80,23 @@ export const Signup =()=> {
 }
   
 export const Signin =()=> {
-    const {setIsLoggedIn} = useContext(MyContext)
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
     const navigate = useNavigate();
+
+    const handleLogin = () => {
+        signin({email, password})
+        .then((res)=>res.json())
+        .then(res=>{
+            if(res.status=='ok'){
+                navigate('/')
+                setCookie('user', res.data, 5)
+            }else{
+                toast.error('Something wrong')
+            }
+        })
+        
+    }
     return (
       <div className="auth-cont">
         <div className='auth signin'>
@@ -86,14 +117,14 @@ export const Signin =()=> {
             <div className="myform">
                 <div>
                     <label htmlFor="email">Email address</label> <br/>
-                    <input id="email" type="email" />
+                    <input id="email" type="email" onChange={e=>setEmail(e.target.value)} />
                 </div>
                 <div>
                     <label htmlFor="password">Password</label> <br/>
-                    <input id="password" type="password" />
+                    <input id="password" type="password" onChange={e=>setPassword(e.target.value)} />
                 </div>
             </div>
-            <div className="mybtn" onClick={()=>{setIsLoggedIn(true); navigate('/')}}>
+            <div className="mybtn" onClick={handleLogin}>
                 <button >Sign in</button>
             </div>
             <div className="f-auth mt-3">
@@ -109,6 +140,7 @@ export const Signin =()=> {
             </div>
         </div>
       </div>
+      <ToastContainer autoClose={200000000000} theme='dark' />
       </div>
     )
 }

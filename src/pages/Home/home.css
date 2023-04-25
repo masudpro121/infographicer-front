@@ -1,7 +1,7 @@
 .p-cards{
     display: grid;
     grid-template-columns: repeat(auto-fit, 300px);
-    gap: 20px
+    gap: 40px
 }
 
 .p-card{

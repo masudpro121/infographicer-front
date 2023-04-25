@@ -47,3 +47,15 @@ button{
 
 
 
+
+
+
+.Toastify__toast{
+  min-height: 0;
+}
+.Toastify__progress-bar--success{
+  background-color: var(--primary-color);
+}
+.Toastify__toast svg{
+  fill: rgb(23, 210, 235)
+}

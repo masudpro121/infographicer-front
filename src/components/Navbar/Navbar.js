@@ -8,9 +8,15 @@ import { MdMiscellaneousServices, MdOutlinePrivacyTip } from 'react-icons/md';
 import { Link, useNavigate } from 'react-router-dom';
 import RocketImg from '../../assets/img/rocket.png'
 import { MyContext } from '../../App';
+import { deleteCookie } from '../../utils/cookie';
 export default function Navbar() {
   const {setIsLoggedIn} = useContext(MyContext)
   const navigate = useNavigate()
+
+  const handleLogout = () => {
+    deleteCookie('user')
+     navigate('/')
+  }
   return (
     <div className="mynav">
         <div className="logo">
@@ -46,7 +52,7 @@ export default function Navbar() {
                 <MdMiscellaneousServices />
               </div>
               <div className="text">
-                Projects
+                Project
               </div>
             </div>
             </Link>
@@ -75,7 +81,7 @@ export default function Navbar() {
               <div className="icon">
                 <IoIosLogOut />
               </div>
-              <div className="text" style={{cursor:'pointer'}} onClick={()=>{setIsLoggedIn(false); navigate('/')}}>
+              <div className="text" style={{cursor:'pointer'}} onClick={handleLogout}>
                 Logout
               </div>
             </div>
