@@ -1,5 +1,5 @@
 import { getCookie } from "../utils/cookie"
-const server = 'http://localhost:8000'
+const server = process.env.REACT_APP_SERVER
 
 // Sign in 
 export const signin = (data) => {
