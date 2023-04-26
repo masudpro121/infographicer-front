@@ -31,6 +31,7 @@ export const Signup =()=> {
             .then(res=>{
                 if(res.status=='ok'){
                     toast.success("Account Created Successfully")
+                    setTimeout(()=>navigate('/'), 2000)
                 }else{
                     if(res.message.includes('duplicate')){
                         toast.error('Already have an account')
@@ -115,7 +116,8 @@ export const Signin =()=> {
             .then((res)=>res.json())
             .then(res=>{
                 if(res.status=='ok'){
-                    navigate('/')
+                    toast.success('Successfully Logged in')
+                    setTimeout(()=>navigate('/'), 2000)
                     setCookie('user', res.data, 5)
                 }else{
                     toast.error("Authentication Failed")
