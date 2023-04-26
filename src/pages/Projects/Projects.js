@@ -15,6 +15,7 @@ import {FiSearch} from 'react-icons/fi'
 import GenerateDocx from '../../components/GenerateDocx/GenerateDocx';
 import GeneratePptx from '../../components/GeneratePptx/GeneratePptx';
 import { saveProject } from '../../apis/server';
+import debounce from '../../utils/debounce';
 
 function Projects() {
   const {outputs, setOutputs} = useContext(MyContext)
@@ -235,6 +236,10 @@ const fakeOutputs = [
     Over the next 20 years, I ran Boston now and again. Then I began returning on the precise 5-year anniversaries of 1968.`
   },
 ]
+
+const handleTest = () => {
+  console.log('handle test');
+}
   return (
     <>
     <div className='projects'>
@@ -290,7 +295,7 @@ const fakeOutputs = [
         </div>
         <div className='other-btns'>
         {
-          outputs.length > 0  && <button onClick={handleSave}>Save</button>
+          outputs.length > 0  && <button onClick={debounce(handleSave, 500)}>Save</button>
         }
         {
           outputs.length > 0  && <GenerateDocx outputs={outputs} />

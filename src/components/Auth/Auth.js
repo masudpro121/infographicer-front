@@ -9,6 +9,7 @@ import { MyContext } from '../../App'
 import { signin, signup } from '../../apis/server'
 import { setCookie } from '../../utils/cookie'
 import { ToastContainer, toast } from 'react-toastify'
+import debounce from '../../utils/debounce'
 
 export const Signup =()=> {
     const [email, setEmail] = useState('')
@@ -16,14 +17,30 @@ export const Signup =()=> {
     const [residence, setResidence] = useState('saudi')
     const navigate = useNavigate();
     const handleSignup = () => {
-        signup({email, password, residence})
-        .then((res)=>res.json())
-        .then(res=>{
-            console.log(res);
-            if(res.status=='ok'){
-                navigate('/signin')
-            }
-        })
+        if(!email){
+            toast.error("Email is required")
+        }else if(!email.includes('@')){
+            toast.error("Bad format Email")
+        }else if(!password){
+            toast.error("Password is required")
+        }else if(!residence){
+            toast.error("Residence is required")
+        }else {
+            signup({email, password, residence})
+            .then((res)=>res.json())
+            .then(res=>{
+                if(res.status=='ok'){
+                    toast.success("Account Created Successfully")
+                }else{
+                    if(res.message.includes('duplicate')){
+                        toast.error('Already have an account')
+                    }
+                }
+            })
+            .catch(err=>{
+                toast.error('Something wrong on Server')
+            })
+        }
     }
     return (
       <div className='auth-cont'>
@@ -60,7 +77,7 @@ export const Signup =()=> {
                 </div>
             </div>
             <div className="mybtn">
-                <button onClick={handleSignup}>Create an account</button>
+                <button onClick={debounce(handleSignup, 500)}>Create an account</button>
             </div>
             <div className="f-auth mt-3">
                 <div >
@@ -75,6 +92,7 @@ export const Signup =()=> {
             </div>
         </div>
       </div>
+      <ToastContainer autoClose={2000} theme='dark' />
       </div>
     )
 }
@@ -85,16 +103,28 @@ export const Signin =()=> {
     const navigate = useNavigate();
 
     const handleLogin = () => {
-        signin({email, password})
-        .then((res)=>res.json())
-        .then(res=>{
-            if(res.status=='ok'){
-                navigate('/')
-                setCookie('user', res.data, 5)
-            }else{
-                toast.error('Something wrong')
-            }
-        })
+        if(!email){
+            toast.error("Email is required")
+        }else if(!email.includes('@')){
+            toast.error("Bad format Email")
+        }
+        else if(!password){
+            toast.error("Password is required")
+        }else{
+            signin({email, password})
+            .then((res)=>res.json())
+            .then(res=>{
+                if(res.status=='ok'){
+                    navigate('/')
+                    setCookie('user', res.data, 5)
+                }else{
+                    toast.error("Authentication Failed")
+                }
+            })
+            .catch(err=>{
+                toast.error('Something wrong on Server')
+            })
+        }
         
     }
     return (
@@ -117,15 +147,16 @@ export const Signin =()=> {
             <div className="myform">
                 <div>
                     <label htmlFor="email">Email address</label> <br/>
-                    <input id="email" type="email" onChange={e=>setEmail(e.target.value)} />
+                    <input id="email" type="email"  onChange={e=>setEmail(e.target.value)} />
                 </div>
                 <div>
                     <label htmlFor="password">Password</label> <br/>
-                    <input id="password" type="password" onChange={e=>setPassword(e.target.value)} />
+                    <input id="password" type="password"  onChange={e=>setPassword(e.target.value)} />
                 </div>
-            </div>
-            <div className="mybtn" onClick={handleLogin}>
+            
+            <div className="mybtn" onClick={debounce(handleLogin, 500)}>
                 <button >Sign in</button>
+            </div>
             </div>
             <div className="f-auth mt-3">
                 <div >
